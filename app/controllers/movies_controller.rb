@@ -27,20 +27,8 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-
-       paramss = movie_params
-      genre  = Genre.new(name: paramss[:genre] ,description:"please add")
-      director = Director.new(name: paramss[:director],bio:"please add")
-      @movie = Movie.new(paramss.except(:genre,:director))
-      if !(genre.save)
-        genre = Genre.find_by(name:paramss[:genre])
-        #genre.save
-      end
-      if !(director.save)
-        director =  Director.find_by(name:paramss[:director])
-        # director.save
-      end
-       @movie.genre, @movie.director = genre,director
+    prepare_movie(true)
+     
 
     respond_to do |format|
       if @movie.save
@@ -56,6 +44,7 @@ class MoviesController < ApplicationController
   # PATCH/PUT /movies/1
   # PATCH/PUT /movies/1.json
   def update
+    prepare_movie()
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
@@ -81,6 +70,31 @@ class MoviesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
       @movie = Movie.find(params[:id])
+    end
+
+    def prepare_movie(create)
+
+       paramss = movie_params
+      genre  = Genre.new(name: paramss[:genre] ,description:"please add")
+      director = Director.new(name: paramss[:director],bio:"please add")
+      @movie = Movie.new(paramss.except(:genre,:director,:actors_attributes)) if (create)
+      if !(genre.save)
+        genre = Genre.find_by(name:paramss[:genre])
+        #genre.save
+      end
+      if !(director.save)
+        director =  Director.find_by(name:paramss[:director])
+        # director.save
+      end
+      paramss[:actors_attributes].each do|actor,val| 
+       act = Actor.find_by(name: val[:name] )
+        if !act
+          act = Actor.new(name: val[:name],bio: val[:bio])
+        end
+        @movie.actors<<act
+      end
+      @movie.genre, @movie.director = genre,director
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
