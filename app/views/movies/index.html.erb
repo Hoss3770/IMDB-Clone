@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Listing Movies</h1>
 
@@ -22,6 +22,9 @@
         <td><%= movie.trailer %></td>
         <td><%= movie.genre.name %></td>
         <td><%= movie.director.name %></td>
+        <% movie.actors.each do |actor| %>
+         <td><%= actor.name %></td>
+        <% end %>
         <td><%= link_to 'Show', movie %></td>
         <% if current_user.admin %>
           <td><%= link_to 'Edit', edit_movie_path(movie) %></td>

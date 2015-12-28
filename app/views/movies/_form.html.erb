@@ -24,12 +24,12 @@
     <%= actors_form.text_field :trailer %>
   </div>
   <div class="field">
-    <%= actors_form.label :genre_id,"Genre" %><br>
-    <%= actors_form.text_field :genre_id %>
+    <%= actors_form.label :genre,"Genre" %><br>
+    <%= actors_form.text_field :genre %>
   </div>
   <div class="field">
-    <%= actors_form.label :director_id,"Director" %><br>
-    <%= actors_form.text_field :director_id %>
+    <%= actors_form.label :director,"Director" %><br>
+    <%= actors_form.text_field :director %>
   </div>
   <div class="field">
        <%= actors_form.fields_for :actors do |form|  %> 

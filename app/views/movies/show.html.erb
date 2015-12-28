@@ -17,13 +17,19 @@
 
 <p>
   <strong>Genre:</strong>
-  <%= @movie.genre %>
+  <%= @movie.genre.name %>
 </p>
 
 <p>
   <strong>Director:</strong>
-  <%= @movie.director %>
+  <%= @movie.director.name %>
 </p>
+<p>
+  <strong>Actors</strong>
+    <% @movie.actors.each do |actor| %>
+      <p><%= actor.name %></p><br />
+    <% end %>
+  </p>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
