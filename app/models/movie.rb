@@ -6,8 +6,11 @@ class Movie < ActiveRecord::Base
   	has_and_belongs_to_many :awards
   	has_many :ratings
 
-  	validates :name,:description,:trailer,:actors,presence:true
+  	validates :name,:description,:trailer,presence:true
   	validates :name,:trailer,uniqueness:true
+  	
+
+  	accepts_nested_attributes_for :actors,allow_destroy:true;
 
 
 end

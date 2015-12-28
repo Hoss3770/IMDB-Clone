@@ -23,7 +23,7 @@
         <td><%= movie.genre.name %></td>
         <td><%= movie.director.name %></td>
         <td><%= link_to 'Show', movie %></td>
-        <% if %>
+        <% if current_user.admin %>
           <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
           <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>  

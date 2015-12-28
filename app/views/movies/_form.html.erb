@@ -1,5 +1,5 @@
-<%= form_for(@movie) do |f| %>
-  <% if @movie.errors.any? %>
+ <%= nested_form_for @movie do |actors_form| %>
+   <% if @movie.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
 
@@ -12,26 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= actors_form.label :name %><br>
+    <%= actors_form.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= actors_form.label :description %><br>
+    <%= actors_form.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :trailer %><br>
-    <%= f.text_field :trailer %>
+    <%= actors_form.label :trailer %><br>
+    <%= actors_form.text_field :trailer %>
   </div>
   <div class="field">
-    <%= f.label :genre %><br>
-    <%= f.text_field :genre %>
+    <%= actors_form.label :genre_id,"Genre" %><br>
+    <%= actors_form.text_field :genre_id %>
   </div>
   <div class="field">
-    <%= f.label :director_id %><br>
-    <%= f.text_field :director_id %>
+    <%= actors_form.label :director_id,"Director" %><br>
+    <%= actors_form.text_field :director_id %>
+  </div>
+  <div class="field">
+       <%= actors_form.fields_for :actors do |form|  %> 
+        <%= form.label :name, "Actor" %>
+        <%= form.text_field :name %><br />
+        <%= form.label :bio,"Actor's Bio" %>
+        <%= form.text_area :bio %><br />
+        <%= form.link_to_remove 'Remove Actor' %><br />
+      <% end %>
+      <%= actors_form.link_to_add "Add Actor",:actors %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= actors_form.submit %>
   </div>
 <% end %>
