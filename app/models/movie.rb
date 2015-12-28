@@ -6,5 +6,8 @@ class Movie < ActiveRecord::Base
   	has_and_belongs_to_many :awards
   	has_many :ratings
 
+  	validates :name,:description,:trailer,:actors,presence:true
+  	validates :name,:trailer,uniqueness:true
+
 
 end
