@@ -44,7 +44,7 @@ class MoviesController < ApplicationController
   # PATCH/PUT /movies/1
   # PATCH/PUT /movies/1.json
   def update
-    prepare_movie()
+    prepare_movie(false)
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
@@ -91,7 +91,10 @@ class MoviesController < ApplicationController
         if !act
           act = Actor.new(name: val[:name],bio: val[:bio])
         end
-        @movie.actors<<act
+        @movie.actors<<act 
+        @movie.actors.size.times do |n|
+           @movie.errors.add(:actors, "Two actors or more with the same name Actors" )if @movie.actors[n] == act
+        end
       end
       @movie.genre, @movie.director = genre,director
       

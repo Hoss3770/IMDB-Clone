@@ -8,4 +8,14 @@ module ApplicationHelper
 		 end
 
 	end
+	def print_user
+		if user_signed_in?
+			 content_tag(:li,  :role => 'presentation') do
+		 	link_to "Sign Out", destroy_user_session_path
+		end
+	else content_tag(:li,  :role => 'presentation') do
+		 	link_to "Sign In", new_user_session_path
+	end
+	end
+	end
 end

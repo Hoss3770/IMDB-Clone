@@ -20,10 +20,10 @@
         <td><%= movie.name %></td>
         <td><%= movie.description %></td>
         <td><%= movie.trailer %></td>
-        <td><%= movie.genre.name %></td>
-        <td><%= movie.director.name %></td>
-        <% movie.actors.each do |actor| %>
-         <td><%= actor.name %></td>
+        <td><%= movie.genre.try(:name)|| "Genre was deleted" %></td>
+        <td><%= movie.director.try(:name) || "Director was deleted" %></td>
+        <% movie.actors(:each) do |actor| %>
+         <td><%= actor.try(:name) || " Actor was deleted"  %></td>
         <% end %>
         <td><%= link_to 'Show', movie %></td>
         
