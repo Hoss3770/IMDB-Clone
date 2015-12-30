@@ -3,6 +3,7 @@ class Admins::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
    def new
+    sign_out(current_user) if user_signed_in?
      super
    end
 

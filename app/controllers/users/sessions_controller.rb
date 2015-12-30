@@ -8,8 +8,8 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
    def create
-     super
-     sign_out(current_admin)
+     sign_out.(current_admin) if admin_signed_in? 
+     super 
    end
 
   # DELETE /resource/sign_out
