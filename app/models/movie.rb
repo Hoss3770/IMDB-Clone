@@ -9,8 +9,8 @@ class Movie < ActiveRecord::Base
   	validates :name,:description,:trailer,presence:true
   	validates :name,:trailer,uniqueness:true
   	
-
+  	#should do it for genres,director as well
   	accepts_nested_attributes_for :actors,allow_destroy:true;
-
+  	accepts_nested_attributes_for :ratings
 
 end

@@ -31,11 +31,20 @@
     <% end %>
   </p>
 
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-
 <% if admin_signed_in? %>   
   <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <% end %>   
 
 <%= link_to 'Back', :back %>
+  
+
+  <%= form_for current_user.rating do |rating| %>
+    <%= rating.label :rating %>
+    <%= select("post", "rating", [1,2,3,4,5], {include_blank: false}) %>
+    <%= rating.submit "Add Rating" %>
+  <% end %> 
+  
+
+
+
+

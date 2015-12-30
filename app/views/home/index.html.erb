@@ -1,5 +1,5 @@
 <h1>Home</h1>
-<div class="container">
+
 <div class="row">
 	<div class='col-md-12 col-md-offset-4'><%= render template: '/movies/index'%></div>
 </div>
@@ -10,9 +10,8 @@
 		<div class='col-md-4'><%= render template: '/directors/index'%></div>
 	</div>
 <div class="row">
-<div class='col-md-4'><%= render template: '/genres/index'%></div>
-<div class='col-md-4'><%= render template: '/users/index'%></div>
+<div class='col-md-4 flot-chart-content'><%= render template: '/genres/index'%></div>
+<div class='col-md-4 footer'><%= render template: '/users/index'%></div>
 <div class='col-md-4'><%= render template: '/ratings/index'%></div>
 </div>
 
-</div>

@@ -2,23 +2,25 @@
 <html>
 <head>
   <title>IMDB</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<ul class="nav nav-pills nav-justified" >
-		<%= nav_link 'Home',home_path() %>
-		<%=nav_link('Movies',movies_path())%>
-		<%=nav_link('Actors',actors_path())%>
-		<%=nav_link('Directors',directors_path())%>
-		<%=nav_link('Genres', genres_path())%>
-		<%= raw (print_user)  %>
-	</nav>
-	<%if notice %><p id="notice"><%= notice %></p><% end %>
-	<%if alert %><p id="alert"><%= alert %></p><% end %>
-	<%= params %>
-<%= yield %>
-
+	<div class="container">
+		<ul class="nav nav-pills nav-justified" >
+			<%= nav_link 'Home',home_path() %>
+			<%=nav_link('Movies',movies_path())%>
+			<%=nav_link('Actors',actors_path())%>
+			<%=nav_link('Directors',directors_path())%>
+			<%=nav_link('Genres', genres_path())%>
+			<%= raw (print_user)  %>
+		</nav>
+		</ul>
+		<%if notice %><p id="notice"><%= notice %></p><% end %>
+		<%if alert %><p id="alert"><%= alert %></p><% end %>
+		<%= params %>
+		<%= yield %>
+	</div>
 </body>
 </html>

@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
-
+gem 'haml-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -33,7 +34,10 @@ gem "nested_form"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 #seacrch help
+gem 'html2haml'
 gem 'searchkick'
+gem 'haml'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 # better error messages
