@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Listing Awards</h1>
 
@@ -17,8 +17,10 @@
         <td><%= award.name %></td>
         <td><%= award.description %></td>
         <td><%= link_to 'Show', award %></td>
-        <td><%= link_to 'Edit', edit_award_path(award) %></td>
-        <td><%= link_to 'Destroy', award, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if admin_signed_in? %>
+          <td><%= link_to 'Edit', edit_award_path(award) %></td>
+          <td><%= link_to 'Destroy', award, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+        <% end %>   
       </tr>
     <% end %>
   </tbody>

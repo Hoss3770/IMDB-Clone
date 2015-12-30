@@ -30,6 +30,7 @@
       <p><%= actor.try(:name) || "Actor was deleted" %></p><br />
     <% end %>
   </p>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<% end %>   
+  <%= link_to 'Edit', edit_movie_path(@movie) %> |
+<% end %>   
 <%= link_to 'Back', :back %>

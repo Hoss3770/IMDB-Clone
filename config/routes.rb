@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   
   devise_for :users, controllers: { sessions: "users/sessions" }
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy' 
-  end
+  
+  devise_for :admins, controllers: {sessions: 'admins/sessions'}
    
-  devise_for :admins
+  
   root 'home#index'
   get '/home',to:'home#index',as: 'home'
   resources :users
+  #get '/userss/:id',to: 'users#show', as: 'user_show'
   resources :awards
   resources :ratings
   resources :genres

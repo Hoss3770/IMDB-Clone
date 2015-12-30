@@ -15,6 +15,7 @@
   <%= @user.password %>
 </p>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<% if @user.email == current_user.email || admin_signed_in? %>
+	<%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %> 	
 <%= link_to 'Back', users_path %>
