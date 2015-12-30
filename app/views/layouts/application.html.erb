@@ -7,16 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
 	<ul class="nav nav-pills nav-justified" >
 		<%= nav_link 'Home',home_path() %>
 		<%=nav_link('Movies',movies_path())%>
 		<%=nav_link('Actors',actors_path())%>
 		<%=nav_link('Directors',directors_path())%>
 		<%=nav_link('Genres', genres_path())%>
+		<%= raw (print_user)  %>
 	</nav>
-	<%if notice %><p class="notice"><%= notice %></p><% end %>
-	<%if alert %><p class="alert"><%= alert %></p><% end %>
+	<%if notice %><p id="notice"><%= notice %></p><% end %>
+	<%if alert %><p id="alert"><%= alert %></p><% end %>
 	<%= params %>
 <%= yield %>
 

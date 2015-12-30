@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228205203) do
+
+ActiveRecord::Schema.define(version: 20151228213100) do
+
 
   create_table "actors", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +29,24 @@ ActiveRecord::Schema.define(version: 20151228205203) do
 
   add_index "actors_movies", ["actor_id"], name: "index_actors_movies_on_actor_id"
   add_index "actors_movies", ["movie_id"], name: "index_actors_movies_on_movie_id"
+
+  create_table "admins", force: :cascade do |t|
+    t.string   "email",              default: "", null: false
+    t.string   "encrypted_password", default: "", null: false
+    t.integer  "sign_in_count",      default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "failed_attempts",    default: 0,  null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
+  add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
 
   create_table "awards", force: :cascade do |t|
     t.string   "name"

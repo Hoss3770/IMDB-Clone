@@ -17,19 +17,25 @@
 
 <p>
   <strong>Genre:</strong>
-  <%= @movie.genre.name %>
+  <%= @movie.genre.try(:name)|| "Genre was deleted" %>
 </p>
 
 <p>
   <strong>Director:</strong>
-  <%= @movie.director.name %>
+  <%= @movie.director.try(:name)|| "Director was deleted" %>
 </p>
 <p>
   <strong>Actors</strong>
     <% @movie.actors.each do |actor| %>
-      <p><%= actor.name %></p><br />
+      <p><%= actor.try(:name) || "Actor was deleted" %></p><br />
     <% end %>
   </p>
 
+
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
+
+<% if admin_signed_in? %>   
+  <%= link_to 'Edit', edit_movie_path(@movie) %> |
+<% end %>   
+
 <%= link_to 'Back', :back %>

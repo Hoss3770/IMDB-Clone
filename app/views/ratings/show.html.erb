@@ -9,6 +9,7 @@
   <strong>User:</strong>
   <%= @rating.user %>
 </p>
-
-<%= link_to 'Edit', edit_rating_path(@rating) %> |
+<% if admin_signed_in? %>
+	<%= link_to 'Edit', edit_rating_path(@rating) %> |
+<% end %> 	
 <%= link_to 'Back', ratings_path %>

@@ -44,7 +44,9 @@ class MoviesController < ApplicationController
   # PATCH/PUT /movies/1
   # PATCH/PUT /movies/1.json
   def update
-    prepare_movie()
+
+    prepare_movie(false)
+
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
@@ -73,7 +75,10 @@ class MoviesController < ApplicationController
     end
 
     def prepare_movie(create)
+
       #use find_or_create_by
+
+
        paramss = movie_params
       genre  = Genre.new(name: paramss[:genre] ,description:"please add")
       director = Director.new(name: paramss[:director],bio:"please add")
@@ -91,7 +96,6 @@ class MoviesController < ApplicationController
         if !act
           act = Actor.new(name: val[:name],bio: val[:bio])
         end
-        @movie.actors<<act
       end
       @movie.genre, @movie.director = genre,director
       
